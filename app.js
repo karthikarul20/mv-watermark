@@ -1,6 +1,6 @@
 var app = angular.module('plunker', ['pdfjsViewer']);
 
-app.controller('MainCtrl', function($scope, $http) {
+app.controller('MainCtrl', function($scope, $http, $compile) {
   $scope.test = function(){
     console.log("Test Success");
   };
@@ -8,7 +8,13 @@ app.controller('MainCtrl', function($scope, $http) {
   $scope.data = null; // this is loaded async
 
   $scope.pdf = {
-    src: 'example.pdf',
-};
+      src: 'example.pdf',
+  };
+
+
+  $scope.initWaterMark = function(){
+    console.log("initWaterMark");
+    $scope.resetWaterMark=true;
+  };
 
 });

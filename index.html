@@ -50,10 +50,10 @@
         </ul>
     </div>
 </nav>
-<div class="pdf-container" style="height: 600px;background: #eee;margin: 50px;">
-    <pdfjs-viewer src="{{ pdf.src }}"></pdfjs-viewer>
+<div class="pdf-container" style="background: #eee;margin: 50px;height: 100%;">
+    <pdfjs-viewer src="{{ pdf.src }}" on-init="initWaterMark()"></pdfjs-viewer>
     <!-- WATERMARK -->
-    <div mv-watermark="dragOptions">
+    <div mv-watermark="dragOptions" reset-water-mark="resetWaterMark">
         <p>
             <i class="fa fa-arrows"></i> Click & drag watermark
         </p>

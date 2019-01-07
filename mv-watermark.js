@@ -4,32 +4,17 @@ angular.module('plunker')
             restrict: 'A',
             scope: {
                 dragOptions: '=mvWatermark',
+                reset: '=resetWaterMark',
             },
             link: function (scope, wbElem, attr) {
                 var startX, startY, x = 0,
                     y = 0,
                     show, start, stop, drag;
+                var parentHeight=0, wbHeight=0, wtHeight=0, viewportHeight=0;
+                var wtElem;
 
-                angular.element(wbElem).parent().css({
-                    position: "relative"
-                });
-                angular.element(wbElem).addClass("watermark-bottom watermark");
-                var wtElem = angular.element("<div class='watermark-top watermark'></div>").insertBefore(wbElem);
 
-                var viewportHeightPercentage=60;
-                var parentHeight = angular.element(wbElem).parent().height();
-                var viewportHeight=(parentHeight*viewportHeightPercentage)/100;
-                console.log(parentHeight);
-                var wbHeight = (parentHeight/2)-(viewportHeight/2);
-                var wtHeight =  wbHeight;
-                wbElem.css({
-                    height: wbHeight + 'px'
-                });
-
-                wtElem.css({
-                    height: wtHeight + 'px'
-                });
-
+                console.log(scope);
                 // Obtain drag options
                 if (scope.dragOptions) {
                     start = scope.dragOptions.start;
@@ -38,9 +23,33 @@ angular.module('plunker')
                     show = scope.dragOptions.show;
                 }
 
-                function initContainer(changePosition) {
-                    if (changePosition)
-                        setPosition();
+                scope.$watch("reset", function() {
+                    console.log("reset");
+                     buildWaterMark();
+                });
+
+                angular.element(wbElem).parent().css({
+                    position: "relative"
+                });
+                angular.element(wbElem).addClass("watermark-bottom watermark");
+                wtElem = angular.element("<div class='watermark-top watermark'></div>").insertBefore(wbElem);
+                buildWaterMark();
+
+                function buildWaterMark() {
+                    var viewportHeightPercentage=30;
+                    parentHeight = angular.element(wbElem).parent().height();
+                    viewportHeight=(parentHeight*viewportHeightPercentage)/100;
+                    console.log(parentHeight);
+                    console.log(scope);
+                    wbHeight = (parentHeight/2)-(viewportHeight/2);
+                    wtHeight =  wbHeight;
+                    wbElem.css({
+                        height: wbHeight + 'px'
+                    });
+
+                    wtElem.css({
+                        height: wtHeight + 'px'
+                    });
                 }
 
                 // Bind mousedown event
@@ -89,7 +98,7 @@ angular.module('plunker')
                 }
 
                 angular.element($window).bind('resize', function () {
-                    initContainer(true);
+                    buildWaterMark();
                 });
 
 
