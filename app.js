@@ -11,6 +11,8 @@ app.controller('MainCtrl', function($scope, $http, $compile) {
       src: 'example.pdf',
   };
 
+  $scope.hasWaterMark=false;
+
 
   $scope.initWaterMark = function(){
     console.log("initWaterMark");
