@@ -2,8 +2,8 @@
 
 /*END Handle tags-input bootstrap styling*/
 
-
-.watermark{
+.watermark {
+    cursor: move;
     text-align: center;
     position: absolute;
     z-index: 1000;
@@ -16,11 +16,17 @@
 }
 
 .watermark-bottom {
-    cursor: move;
     transition: background-color linear .3s;
     bottom: 0;
 }
 
-.watermark-top{
+.watermark-top {
     top: 0;
+}
+
+.watermark-top > div:first-child {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
 }

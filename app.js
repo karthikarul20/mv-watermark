@@ -13,6 +13,15 @@ app.controller('MainCtrl', function($scope, $http, $compile) {
 
   $scope.hasWaterMark=false;
 
+  $scope.enable = function(){
+     $scope.hasWaterMark=true;
+  }
+
+   $scope.disable = function(){
+     $scope.hasWaterMark=false;
+  }
+
+
 
   $scope.initWaterMark = function(){
     console.log("initWaterMark");
