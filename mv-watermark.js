@@ -4,7 +4,6 @@ angular.module('plunker')
             restrict: 'A',
             scope: {
                 dragOptions: '=mvWatermark',
-                reset: '=resetWaterMark',
                 enable: '=enableWaterMark',
             },
             link: function (scope, wbElem, attr) {
@@ -72,11 +71,6 @@ angular.module('plunker')
                 scope.$watch("enable", function () {
                     console.log("enable");
                     buildWaterMark();
-                });
-
-                scope.$watch("reset", function () {
-                    console.log("reset");
-                    resetWaterMarkHeight();
                 });
 
                 angular.element($window).bind('resize', function () {

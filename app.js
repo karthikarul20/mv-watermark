@@ -25,7 +25,7 @@ app.controller('MainCtrl', function($scope, $http, $compile) {
 
   $scope.initWaterMark = function(){
     console.log("initWaterMark");
-    $scope.resetWaterMark=true;
+    $scope.hasWaterMark=true;
   };
 
 });
