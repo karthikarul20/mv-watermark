@@ -11,6 +11,9 @@ app.controller('MainCtrl', function($scope, $http, $compile) {
       src: 'example.pdf',
   };
 
+
+  $scope.dragOptions = {text: "vasuki@sss.com"}
+
   $scope.hasWaterMark=false;
 
   $scope.enable = function(){

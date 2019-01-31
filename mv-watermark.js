@@ -10,15 +10,11 @@ angular.module('plunker')
 
                 var startX, startY, x = 0,
                     y = 0,
-                    show, start, stop, drag;
+                    show, start, stop, drag, text;
                 var parentHeight = 0, wbHeight = 0, wtHeight = 0, viewportHeight = 0;
                 angular.element(wbElem).parent().css({
                     position: "relative"
                 });
-                angular.element(wbElem).addClass("watermark-bottom watermark");
-                // var wtElem = angular.element("<div class='watermark-top watermark'></div>").insertBefore(wbElem);
-                var wtElem = angular.element("<div class='watermark-top watermark'>" + wbElem.html() + "</div>").insertBefore(wbElem);
-
 
                 console.log(scope);
                 // Obtain drag options
@@ -27,7 +23,21 @@ angular.module('plunker')
                     drag = scope.dragOptions.drag;
                     stop = scope.dragOptions.stop;
                     show = scope.dragOptions.show;
+                    text = scope.dragOptions.text;
                 }
+
+
+                angular.element(wbElem).addClass("watermark-bottom watermark");
+                // var wtElem = angular.element("<div class='watermark-top watermark'></div>").insertBefore(wbElem);
+                var wtElem = angular.element("<div class='watermark-top watermark'>" + wbElem.html() + "</div>").insertBefore(wbElem);
+
+                var backgroundImage = 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' version=\'1.1\' height=\'50px\' width=\'300px\'><text x=\'0\' y=\'15\' fill=\'red\' font-size=\'20\'>'+text+'</text></svg>")';
+                angular.element(wbElem).css({
+                    backgroundImage: backgroundImage
+                });
+                angular.element(wtElem).css({
+                    backgroundImage: backgroundImage
+                });
 
                 function buildWaterMark() {
                     if (scope.enable) {
